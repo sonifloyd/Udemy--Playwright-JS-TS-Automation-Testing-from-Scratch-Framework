@@ -1,0 +1,38 @@
+BY ID 
+#loginBtn
+
+page.locator('#loginBtn')
+
+❌ Fails if ID is dynamic
+By Class --
+.button-primary
+page.locator('.button-primary')
+❌ Risky if class repeats
+3️⃣ By Tag Name
+page.locator('input')
+❌ Too generic (many matches)
+4️⃣ Tag + Class
+page.locator('button.submit-btn')
+✔ Better than onlyclass
+5️⃣ By Attribute
+page.locator('input[name="email"]')
+✔ Very stable
+🔥 Most used in Playwright
+✔ Very stable
+🔥 Most used in Playwright
+6️⃣ Multiple Attributes
+page.locator('input[type="text"][name="email"]')
+7️⃣ Parent → Child (Hierarchy)
+page.locator('form#loginForm input[name="email"]')
+✔ Useful when elements repeat
+8️⃣ Pseudo Selectors
+page.locator('li:nth-child(2)')
+❌ Breaks if UI order changes
+
+---------------------------------
+🧠 What You Should Use in REAL Projects
+Priority	Selector Type
+🥇	getByTestId()
+🥈	Attribute selectors
+🥉	Role selectors
+❌	XPath (avoid unless needed)
