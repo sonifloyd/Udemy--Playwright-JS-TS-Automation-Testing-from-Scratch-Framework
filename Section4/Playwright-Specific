@@ -1,0 +1,11 @@
+🔥 Text Selector
+
+page.locator('text=Login')
+
+🔥 Role Selector (Best Practice)
+page.getByRole('button', { name: 'Login' })
+
+🔥 Test ID (MOST RECOMMENDED)
+
+page.getByTestId('login-btn')
+<button data-testid="login-btn">
