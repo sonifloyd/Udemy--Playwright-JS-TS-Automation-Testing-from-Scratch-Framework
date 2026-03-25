@@ -1,0 +1,5 @@
+await page.goto("https://google.com");
+await page.goto("https://facebook.com");
+
+await page.goBack();
+await page.goForward();
