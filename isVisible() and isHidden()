@@ -1,0 +1,2 @@
+boolean visible = page.locator("#login").isVisible();
+boolean hidden = page.locator("#login").isHidden();
