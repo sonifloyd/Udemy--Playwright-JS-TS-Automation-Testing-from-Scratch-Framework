@@ -1,0 +1,9 @@
+await page.locator("#fileUploadInput").setInputFiles("./test-file.txt");
+await expect(page.locator("#uploadedFileName")).toHaveText("test-file.txt");
+
+
+Send Multiple File -----------
+await page.locator("#multiFileInput").setInputFiles([
+  "./file1.txt",
+  "./file2.txt"
+]);
