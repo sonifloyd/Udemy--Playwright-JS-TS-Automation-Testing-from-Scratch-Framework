@@ -1,0 +1,48 @@
+getByRole (Most Recommended ⭐)
+await page.getByRole('button', { name: 'Login' }).click();
+2. 📝 getByText
+await page.getByText('Login').click();
+3. 🏷️ getByLabel
+
+👉 Forms ke liye best
+
+await page.getByLabel('Username').fill('test');
+await page.getByLabel('Password').fill('1234');
+4. 🧪 getByPlaceholder
+await page.getByPlaceholder('Username').fill('test');
+
+✔ Jab label nahi ho
+5. 🧾 getByTestId (SUPER IMPORTANT 🔥)
+
+👉 Dev team se bolna:
+
+<button data-testid="login-btn">Login</button>
+await page.getByTestId('login-btn').click();
+
+6. 🎯 CSS Locator
+await page.locator('#username').fill('test');
+await page.locator('.btn-primary').click();
+7. 🧬 XPath (Avoid if possible)
+await page.locator('//input[@id="username"]').fill('test');
+
+❌ Last option
+
+8. Chaining (Playwright Power 💥)
+await page.locator('form').getByRole('button', { name: 'Login' }).click();
+Parent → child relation
+9. Filtering (Advanced 🔥)
+await page.getByRole('button').filter({ hasText: 'Login' }).click();
+
+10. Multiple Elements Handle
+const items = page.locator('.inventory_item');
+
+Best Locator Priority (Interview Answer)
+
+👉 Ye bolna 👇
+
+getByRole
+getByTestId
+getByLabel / Placeholder
+CSS
+XPath (last)
+await items.nth(0).click();
