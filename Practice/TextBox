@@ -1,0 +1,4 @@
+await page.goto("https://demoqa.com/text-box");
+
+// Using CSS with ID
+await page.locator("#userName").fill("Soni Kumari");
