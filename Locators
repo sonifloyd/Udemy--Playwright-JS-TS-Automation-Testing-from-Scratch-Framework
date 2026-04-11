@@ -1,5 +1,12 @@
 getByRole (Most Recommended ⭐)
 await page.getByRole('button', { name: 'Login' }).click();
+
+Important (VERY IMPORTANT for interview)
+👉 getByTestId() works ONLY if:
+Attribute exists:
+data-testid="value"
+await page.getByTestId('username'); // data-testid="username"
+
 2. 📝 getByText
 await page.getByText('Login').click();
 3. 🏷️ getByLabel
