@@ -1,8 +1,8 @@
 Can a JavaScript object hold a function as a property? Explain with an example.
 
 const person ={
-name : "John",
-age : 30 ,
+name: "John",
+age: 30,
 greet : function()
 {
 console.log( "This is greet function " + this.name);
@@ -11,4 +11,18 @@ console.log( "This is greet function " + this.name);
 person.greet(); // This is greet function John
 person.name ; // John 
 
-Q . What is anaynuous function 
+Q What are anonymous functions in JavaScript? Define their syntax and implementation.
+
+
+Q.What is differnce b/w var, const and let? Explain  with an example?
+var is a global variable. It does not matter whether it is inside the block or outside the block 
+. By default its var if does not defined.
+
+let is a block  variable. If it is defined outside the block, and inside the block, the value will not be updated.
+
+const is a constant throughout everywhere.
+
+
+
+
+
