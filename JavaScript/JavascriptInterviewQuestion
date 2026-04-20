@@ -19,9 +19,50 @@ var is a global variable. It does not matter whether it is inside the block or o
 . By default its var if does not defined.
 
 let is a block  variable. If it is defined outside the block, and inside the block, the value will not be updated.
-
 const is a constant throughout everywhere.
+-------
+push , pop , slice shift ,unshift  while accessing element 
+Method	Action	Changes Original?
+push	add at end	✅ Yes
+pop	remove from end	✅ Yes
+shift	remove from start	✅ Yes
+unshift	add at start	✅ Yes
+slice	copy portion	❌ No
 
+
+let arr = [1, 2, 3];
+arr.push(4);
+console.log(arr); // [1, 2, 3, 4]
+Adds element to end
+👉 Changes original array ✅
+2. pop() → remove from END
+let arr = [1, 2, 3];
+arr.pop();
+console.log(arr); // [1, 2]
+👉 Removes last element
+👉 Returns removed value
+👉 Changes original array ✅
+3. shift() → remove from START
+let arr = [1, 2, 3];
+arr.shift();
+console.log(arr); // [2, 3]
+👉 Removes first element
+👉 Changes original array ✅
+4. unshift() → add at START
+let arr = [2, 3];
+arr.unshift(1);
+console.log(arr); // [1, 2, 3]
+👉 Adds element at beginning
+👉 Changes original array ✅
+5. slice() → copy part (NO change)
+let arr = [1, 2, 3, 4];
+let newArr = arr.slice(1, 3);
+console.log(newArr); // [2, 3]
+console.log(arr);    // [1, 2, 3, 4]
+👉 Extracts part of array
+👉 Does NOT change original ❌
+
+Q .. what is call back function 
 
 
 
