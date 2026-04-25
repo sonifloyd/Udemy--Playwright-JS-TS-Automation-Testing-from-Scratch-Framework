@@ -53,3 +53,24 @@ getByLabel / Placeholder
 CSS
 XPath (last)
 await items.nth(0).click();
+---
+css locator in playwrite 
+By ID (#)
+await page.locator('#username')
+By Class (.)
+await page.locator('.login-btn');
+By Tag Name
+await page.locator('input');
+By Attribute
+await page.locator('[type="text"]');
+By Multiple Attributes
+await page.locator('input[type="text"][name="email"]');
+By Text (CSS + Playwright combo)
+await page.locator('button:has-text("Login")');
+✅ Parent → Child
+await page.locator('div > button');
+✅ Descendant
+await page.locator('div button');
+✅ nth element (index)
+await page.locator('input').nth(0);
+
