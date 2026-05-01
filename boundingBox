@@ -1,0 +1,7 @@
+const box = await locator.boundingBox();
+{
+  x: 100,
+  y: 200,
+  width: 80,
+  height: 30
+}
