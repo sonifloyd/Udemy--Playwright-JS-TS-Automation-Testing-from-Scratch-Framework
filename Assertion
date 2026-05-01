@@ -2,3 +2,4 @@ toBeVisible()
 toHaveText()
 toHaveValue()
 toHaveURL()
+ expect(box).not.toBeNull();
