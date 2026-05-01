@@ -5,3 +5,14 @@ const box = await locator.boundingBox();
   width: 80,
   height: 30
 }
+
+"Optional chaining (?.) is used to safely access properties of an object without throwing an error if the object is null or undefined.
+
+box?.x kya hota hai?
+ Isko bolte hain optional chaining (?.)
+ Simple matlab:
+Agar box null ya undefined ho, to error na do — safe way se access karo
+Risky code--
+console.log(box.x);
+👉 Agar element visible nahi:
+❌ test crash ho jayega
