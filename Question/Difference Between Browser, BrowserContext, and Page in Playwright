@@ -1,0 +1,98 @@
+Hierarchy
+Browser
+   └── BrowserContext
+            └── Page
+
+1. Browser
+
+A Browser is the actual browser instance launched by Playwright.
+
+Examples:
+
+Chromium
+Firefox
+WebKit
+
+It is the top-level object
+Responsibilities
+Launch browser
+Close browser
+Manage contexts
+Browser browser = playwright.chromium().launch();
+This launches browser.
+
+2. BrowserContext
+
+A BrowserContext is an isolated browser session inside the browser.
+
+Like:
+
+Incognito window
+Separate user session
+
+Each context has:
+
+separate cookies
+separate local storage
+separate login session
+Responsibilities
+Session isolation
+Multi-user testing
+Parallel execution
+Java Example
+BrowserContext context = browser.newContext();
+3. Page
+
+A Page represents a single tab/window inside a BrowserContext.
+
+This is where actual automation happens.
+
+Responsibilities
+Click
+Type
+Navigate
+Validate UI
+Java Example
+Page page = context.newPage();
+-----
+Real-Time Ecommerce Example
+Browser
+
+Chrome launched.
+
+BrowserContext
+Customer session
+Admin session
+Page
+Home page
+Cart page
+Checkout page
+-------------------------------------------------
+Full Flow Example
+Browser browser = playwright.chromium().launch();
+BrowserContext context = browser.newContext();
+Page page = context.newPage();
+
+page.navigate("https://google.com");
+Real-Time Analogy
+Browser
+
+Think of it as:
+🏢 Entire Shopping Mall
+
+BrowserContext
+
+Think of it as:
+🚪 Separate Shops inside mall
+
+Each shop is isolated.
+
+Page
+
+Think of it as:
+📄 Individual room/window inside shop
+--------------------------------------------------------------------------------------------
+“Browser is the actual browser instance managed by Playwright. BrowserContext is an isolated 
+session within the browser that maintains separate authentication and storage states. 
+Page represents a single tab inside a context where UI interactions are performed. 
+This layered architecture helps Playwright support efficient parallel execution and multi-user testing.”
