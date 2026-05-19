@@ -1,0 +1,105 @@
+1. Direct Browser Communication
+
+Playwright directly communicates with browsers using native browser protocols.
+
+Example:
+
+Chromium → Chrome DevTools Protocol (CDP)
+
+Selenium uses:
+
+Test Script
+   ↓
+WebDriver
+   ↓
+Browser Driver
+   ↓
+Browser
+
+Extra layers increase:
+
+latency
+synchronization issues
+
+Playwright removes many intermediate layers.
+-------------------------------------------------------------
+2. No External Browser Drivers
+
+Selenium needs:
+
+ChromeDriver
+GeckoDriver
+EdgeDriver
+
+Playwright has built-in browser management.
+
+Benefits:
+
+less setup
+fewer compatibility issues
+faster startup
+
+-----------------------------------------------------------
+3. Built-In Auto Waiting
+
+Playwright automatically waits for elements before action.
+
+Example:
+
+locator.click();
+
+Internally it waits for:
+
+visible
+stable
+attached to DOM
+enabled
+
+Selenium often requires:
+
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+Less manual wait logic → faster + stable execution.
+------------------------------------------------------------------------------
+4. Faster Parallel Execution
+
+Playwright supports lightweight BrowserContexts.
+
+Instead of launching multiple browsers:
+
+One Browser
+   ├── Context 1
+   ├── Context 2
+   └── Context 3
+
+This reduces:
+
+memory usage
+execution time
+
+Selenium Grid setup is heavier.
+---------------------------------------------------------------------------
+5. Better Modern Web App Handling
+
+Playwright handles:
+
+React
+Angular
+Vue
+
+more efficiently because it has:
+
+automatic synchronization
+network awareness
+DOM stability checks
+6. Network Interception Built-In
+
+Playwright can:
+
+mock APIs
+intercept requests
+block resources
+
+without third-party tools.
+
+This speeds up testing.
