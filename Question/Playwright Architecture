@@ -1,0 +1,29 @@
+Test Script
+   ↓
+Playwright
+   ↓
+Direct Browser Communication
+   ↓
+Browser
+
+Browser Context Architecture (Very Important)
+
+One browser can have multiple isolated sessions.
+
+Example:
+
+Browser
+ ├── Context 1 (User A)
+ ├── Context 2 (User B)
+ └── Context 3 (Admin)
+
+Benefits:
+
+Faster parallel execution
+Multi-user testing
+Session isolation
+Less memory usage
+
+Playwright architecture is designed around direct browser communication using native browser protocols
+instead of external WebDrivers. The Playwright client communicates with a Playwright driver/server, which directly controls browser engines like Chromium, Firefox, and WebKit. It also supports isolated browser contexts, built-in synchronization, 
+auto-waiting, network interception, and parallel execution, making it faster and more stable than Selenium for modern web applications
