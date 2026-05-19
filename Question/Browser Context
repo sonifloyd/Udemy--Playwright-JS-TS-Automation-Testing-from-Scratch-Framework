@@ -1,0 +1,56 @@
+Browser Context in Playwright is an isolated browser session similar to an incognito window. 
+Multiple contexts can run inside a single browser instance while maintaining separate cookies, 
+cache, and authentication states. It helps in fast parallel execution, multi-user testing, and efficient resource management
+
+Simple Real-Time Example
+
+Suppose you want to test:
+
+User A shopping cart
+User B shopping cart
+
+at the same time.
+
+Instead of opening 2 separate browsers, Playwright creates:
+
+One Browser
+   ├── Context 1 → User A
+   └── Context 2 → User B
+
+Both users remain isolated.
+Why Browser Context is Important
+Benefits
+1. Session Isolation
+
+Each context has separate:
+
+login session
+cookies
+cache
+
+No data sharing.
+
+2. Faster Execution
+
+Creating contexts is lightweight compared to launching full browsers.
+
+3. Parallel Testing
+
+Multiple users/scenarios can run simultaneously.
+
+4. Multi-User Testing
+
+Useful for:
+
+Admin/User flow
+Chat applications
+Ecommerce checkout
+Role-based testing
+Architecture Understanding
+Browser
+   ↓
+Browser Context
+   ↓
+Page/Tabs
+
+One context can have multiple pages/tabs.
