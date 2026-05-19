@@ -1,0 +1,40 @@
+Definition
+
+Auto-wait means Playwright automatically waits for elements to become ready before performing actions.
+
+You usually do NOT need:
+
+Thread.sleep()
+many explicit waits
+Example
+page.locator("#login").click();
+
+Before clicking, Playwright automatically checks:
+
+element exists
+visible
+enabled
+stable
+attached to DOM
+
+Then action happens.
+
+Why Auto-Waits are Important
+
+Without waits:
+
+flaky tests happen
+timing failures occur
+
+Example:
+
+button loads after API response
+Selenium clicks immediately → failure
+Playwright waits automatically
+Auto-Wait Happens For
+Actions
+click
+fill
+type
+hover
+check
