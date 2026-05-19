@@ -1,0 +1,27 @@
+What is Playwright and why is it better than Selenium in some cases?
+Playwright is a modern automation testing framework developed by Microsoft used for:
+
+Web UI automation
+API testing
+Cross-browser testing
+End-to-end testing
+
+It supports:
+
+Chromium
+Firefox
+WebKit
+
+and languages like:
+
+Java
+JavaScript
+TypeScript
+Python
+C#
+“Playwright is a modern open-source automation 
+framework developed by Microsoft for end-to-end web testing. It supports multiple browsers and provides fast, 
+reliable, and stable automation with features like auto-waiting, parallel execution, network interception, multiple browser contexts, 
+and built-in API testing.
+
+Compared to Selenium, Playwright is better in some cases because it reduces flaky tests, handles modern web applications more effectively, and provides faster execution with less setup.
