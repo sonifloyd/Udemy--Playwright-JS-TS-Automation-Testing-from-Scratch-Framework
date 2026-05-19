@@ -1,0 +1,323 @@
+1. locator()
+Definition
+
+locator() is the recommended modern way to find elements in Playwright.
+
+It supports:
+
+auto-waiting
+retry mechanism
+stable execution
+Example
+Locator loginBtn = page.locator("#login");
+
+loginBtn.click();
+Features
+
+✅ Auto-wait
+✅ Retry support
+✅ Lazy evaluation
+✅ Handles dynamic elements well
+✅ Best practice in Playwright
+
+Why Preferred?
+
+Playwright resolves locator at action time.
+
+If DOM changes:
+
+locator still works properly.
+
+Very useful for dynamic applications.
+
+2. page.$()
+Definition
+
+page.$() returns the first matching ElementHandle immediately.
+
+Example
+ElementHandle element = page.$("#login");
+
+element.click();
+Problem with page.$()
+
+❌ No auto-retry
+❌ Less stable
+❌ Can become stale
+❌ Not recommended for modern usage
+
+Important Interview Point
+
+page.$() behaves more like Selenium WebElement.
+
+If element changes:
+
+handle may become invalid.
+3. getByText()
+Definition
+
+Finds element using visible text.
+
+Example
+page.getByText("Login").click();
+Best Used For
+buttons
+labels
+visible UI validation
+Benefits
+
+✅ Readable tests
+✅ User-centric approach
+✅ Auto-wait included
+
+Limitation
+
+If multiple elements have same text:
+
+ambiguity may happen.
+4. getByRole()
+Definition
+
+Finds elements using ARIA roles and accessible names.
+
+Example
+page.getByRole(AriaRole.BUTTON,
+    new Page.GetByRoleOptions().setName("Login"))
+    .click();
+Why Important?
+
+This is Playwright’s most recommended locator strategy.
+
+It improves:
+
+accessibility testing
+stable locators
+maintainability
+Common Roles
+button
+textbox
+checkbox
+link
+heading
+Why getByRole() is Powerful
+
+It behaves like real user interaction.
+
+Example:
+
+user sees button
+role identifies button semantically
+
+Very stable against DOM changes.
+
+1. Why is page.$() Discouraged in Playwright?
+
+page.$() is discouraged because it returns an immediate static ElementHandle.
+
+Example:
+
+ElementHandle element = page.$("#login");
+
+Problems:
+
+❌ No auto-waiting
+❌ No retry mechanism
+❌ Can become stale if DOM changes
+❌ Less reliable for dynamic applications
+Real-Time Problem
+
+Suppose:
+
+React page re-renders button after API call.
+
+Using:
+
+ElementHandle btn = page.$("#submit");
+
+After DOM refresh:
+
+old handle becomes invalid
+test may fail
+Why Locator is Better
+Locator btn = page.locator("#submit");
+btn.click();
+
+Locator finds fresh element during action execution.
+
+This reduces flaky tests.
+
+SDET2 Interview Answer
+
+“page.$() is discouraged because it returns a static ElementHandle immediately without auto-waiting or retry support. In dynamic applications, the element may become stale after DOM updates, making tests flaky. Playwright recommends Locator APIs because they are more stable and resilient.”
+
+2. What is Lazy Evaluation in Locator?
+Definition
+
+Locator does NOT immediately search for the element.
+
+It searches only when action happens.
+
+This is called lazy evaluation.
+
+Example
+Locator loginBtn = page.locator("#login");
+
+At this point:
+❌ element is NOT searched yet.
+
+Only when:
+
+loginBtn.click();
+
+Playwright actually finds the element.
+
+Why Important?
+
+If DOM changes:
+
+locator gets latest element state
+avoids stale element problems
+Selenium vs Playwright
+Selenium
+WebElement element = driver.findElement(By.id("login"));
+
+Element found immediately.
+
+Playwright
+Locator locator = page.locator("#login");
+
+Element resolved later during action.
+
+SDET2 Interview Answer
+
+“Lazy evaluation means Playwright locators do not immediately query the DOM when created. The actual element lookup happens only when an action or assertion is performed. This helps Playwright work reliably with dynamic DOM changes and reduces stale element issues.”
+
+3. Which Locator Strategy is Most Stable?
+Most Stable Strategy
+
+✅ getByRole()
+
+Example:
+
+page.getByRole(AriaRole.BUTTON,
+new Page.GetByRoleOptions().setName("Login"));
+Why Most Stable?
+
+Because it uses:
+
+accessibility roles
+user-visible behavior
+semantic meaning
+
+instead of fragile:
+
+XPath
+CSS structure
+Stability Order (Generally)
+getByRole()  → Most Stable
+getByLabel()
+getByText()
+locator(css)
+XPath → Least Stable
+Why XPath is Less Stable?
+
+DOM structure changes frequently.
+
+Example:
+
+//div[2]/span/button
+
+Small UI changes can break test.
+
+SDET2 Interview Answer
+
+“getByRole() is considered the most stable locator strategy because it uses accessibility roles and user-facing attributes instead of DOM structure. It is resilient to UI layout changes and aligns with real user interactions.”
+
+4. Difference Between ElementHandle and Locator
+Feature	ElementHandle	Locator
+Nature	Static reference	Dynamic query
+Auto Wait	❌ No	✅ Yes
+Retry Support	❌ No	✅ Yes
+Lazy Evaluation	❌ No	✅ Yes
+Dynamic DOM Handling	Poor	Excellent
+Recommended	❌ No	✅ Yes
+ElementHandle
+
+Represents actual DOM element at a specific moment.
+
+Example:
+
+ElementHandle el = page.$("#login");
+
+If DOM updates:
+
+handle may become stale.
+Locator
+
+Represents logic to find element.
+
+Example:
+
+Locator locator = page.locator("#login");
+
+Each action:
+
+re-fetches latest element.
+Most Important Interview Point
+Locator is “smart”
+ElementHandle is “fixed”
+SDET2 Interview Answer
+
+“ElementHandle is a static reference to a DOM element captured at a specific point in time, whereas Locator is a dynamic abstraction that resolves the element during actions and assertions. Locator supports auto-waiting, retries, and lazy evaluation, making it more reliable for dynamic applications.”
+
+5. Why Does Playwright Recommend getByRole()?
+
+Playwright recommends getByRole() because it:
+
+mimics real user behavior
+improves accessibility testing
+creates stable locators
+reduces flaky tests
+Example
+page.getByRole(AriaRole.BUTTON,
+new Page.GetByRoleOptions().setName("Submit"));
+Benefits
+1. Accessibility Friendly
+
+Uses:
+
+ARIA roles
+accessible names
+
+Encourages accessible UI development.
+
+2. More Stable
+
+Independent of:
+
+CSS classes
+DOM hierarchy
+3. Human Readable
+getByRole(BUTTON, "Login")
+
+looks cleaner than:
+
+//div[3]/button[2]
+Real-Time Example
+
+If developer changes:
+
+<button class="btn-primary">Login</button>
+
+to:
+
+<button class="new-style">Login</button>
+
+getByRole() still works.
+
+CSS locator may fail.
+
+Advanced SDET2 Answer
+
+“Playwright recommends getByRole() because it provides stable, accessibility-aware, and user-centric locators. Since it relies on semantic roles and accessible 
+names instead of implementation details like CSS classes or DOM structure, tests become more maintainable and less flaky.”
