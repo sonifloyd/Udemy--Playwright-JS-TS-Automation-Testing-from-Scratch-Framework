@@ -10,5 +10,4 @@ Example:
 var a = 10;
 let b = 20;
 const c = 30;
-
 const object properties can still change.
