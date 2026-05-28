@@ -11,3 +11,11 @@ var a = 10;
 let b = 20;
 const c = 30;
 const object properties can still change.
+
+What is hoisting?
+JavaScript moves declarations to the top during compilation.
+console.log(a);
+var a = 5;
+Output:
+undefined
+Because only declaration is hoisted, not initialization.
