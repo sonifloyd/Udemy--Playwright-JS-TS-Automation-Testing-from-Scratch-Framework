@@ -19,3 +19,10 @@ var a = 5;
 Output:
 undefined
 Because only declaration is hoisted, not initialization.
+3. Difference between == and ===
+5 == "5"   // true
+5 === "5"  // false
+== checks value only
+=== checks value + datatype
+Always prefer ===.
+
