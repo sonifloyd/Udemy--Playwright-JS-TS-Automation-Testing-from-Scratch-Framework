@@ -1,0 +1,14 @@
+1. Difference between var, let, and const
+Feature	var	let	const
+| Feature    | var      | let   | const |
+| ---------- | -------- | ----- | ----- |
+| Scope      | Function | Block | Block |
+| Re-declare | Yes      | No    | No    |
+| Re-assign  | Yes      | Yes   | No    |
+
+Example:
+var a = 10;
+let b = 20;
+const c = 30;
+
+const object properties can still change.
